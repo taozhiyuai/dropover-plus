@@ -115,7 +115,7 @@ class ShelfManager: ObservableObject {
             let data = try encoder.encode(shelves)
             try data.write(to: stateFilePath())
         } catch {
-            print("Failed to save shelf state: \(error)")
+            print(L.saveFailed(error.localizedDescription))
         }
     }
 
@@ -128,7 +128,7 @@ class ShelfManager: ObservableObject {
             let loaded = try decoder.decode([Shelf].self, from: data)
             shelves = loaded
         } catch {
-            print("Failed to load shelf state: \(error)")
+            print(L.loadFailed(error.localizedDescription))
         }
     }
 }

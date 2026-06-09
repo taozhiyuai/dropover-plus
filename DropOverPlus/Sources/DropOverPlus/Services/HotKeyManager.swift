@@ -42,7 +42,7 @@ class HotKeyManager {
         )
 
         guard let tap else {
-            print("HotKey: 无法创建事件监听。请在 系统设置 > 隐私与安全性 > 辅助功能 中允许 DropOverPlus。")
+            print(L.hotkeyFailed)
             return
         }
 
@@ -50,7 +50,7 @@ class HotKeyManager {
         let runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, tap, 0)
         CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)
         CGEvent.tapEnable(tap: tap, enable: true)
-        print("HotKey: ⌘⇧N 已注册")
+        print(L.hotkeyOK)
     }
 
     /// Unregister the hotkey
@@ -59,7 +59,7 @@ class HotKeyManager {
         CGEvent.tapEnable(tap: tap, enable: false)
         CFMachPortInvalidate(tap)
         eventTap = nil
-        print("HotKey: 已注销")
+        print("HotKey: unregistered")
     }
 
     /// Handle a keyDown event — check if it's our hotkey

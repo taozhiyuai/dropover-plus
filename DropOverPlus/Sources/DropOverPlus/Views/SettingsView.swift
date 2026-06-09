@@ -11,37 +11,37 @@ struct SettingsView: View {
         TabView {
             generalSettings
                 .tabItem {
-                    Label("通用", systemImage: "gearshape")
+                    Label(L.settingsGeneral, systemImage: "gearshape")
                 }
 
             aboutTab
                 .tabItem {
-                    Label("关于", systemImage: "info.circle")
+                    Label(L.settingsAbout, systemImage: "info.circle")
                 }
         }
-        .frame(width: 400, height: 280)
+        .frame(width: 400, height: 320)
     }
 
     // MARK: - General
 
     private var generalSettings: some View {
         Form {
-            Section("行为") {
-                Toggle("拖出文件后关闭 Shelf", isOn: $closeAfterDragOut)
+            Section {
+                Toggle(L.closeAfterDrag, isOn: $closeAfterDragOut)
 
-                Toggle("Shelf 窗口保持在最前", isOn: $floatingOnTop)
+                Toggle(L.floatOnTop, isOn: $floatingOnTop)
                     .onChange(of: floatingOnTop) { _, newValue in
                         updateAllWindowsLevel(newValue)
                     }
             }
 
-            Section("最近 Shelf") {
-                Stepper("最多保留 \(maxRecentShelves) 个", value: $maxRecentShelves, in: 1...20)
+            Section {
+                Stepper(L.maxRecent(maxRecentShelves), value: $maxRecentShelves, in: 1...20)
             }
 
-            Section("快捷键") {
+            Section(L.shortcuts) {
                 HStack {
-                    Text("新建 Shelf")
+                    Text(L.newShelfKey)
                     Spacer()
                     Text("⌘⇧N")
                         .font(.system(.body, design: .monospaced))
@@ -68,11 +68,11 @@ struct SettingsView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
 
-            Text("v1.0.0 — 拖放操作，重新想象")
+            Text(L.version("v1.0.0", L.appTagline))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
-            Text("灵感来自 Dropover，纯 SwiftUI 实现。\n拖拽文件到 Shelf 临时存放，\n再从 Shelf 拖出到目标位置。")
+            Text(L.aboutDesc)
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)

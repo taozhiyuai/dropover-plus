@@ -43,19 +43,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func setupMenuBar() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.button?.image = NSImage(systemSymbolName: "tray.full", accessibilityDescription: "DropOverPlus")
+        statusItem.button?.image = NSImage(systemSymbolName: "tray.full", accessibilityDescription: L.appName)
 
         let menu = NSMenu()
         menu.delegate = self
 
         // New Shelf
-        let newItem = NSMenuItem(title: "新建 Shelf", action: #selector(createNewShelf), keyEquivalent: "n")
+        let newItem = NSMenuItem(title: L.newShelf, action: #selector(createNewShelf), keyEquivalent: "n")
         newItem.keyEquivalentModifierMask = [.command, .shift]
         menu.addItem(newItem)
 
         menu.addItem(NSMenuItem.separator())
 
-        menu.addItem(NSMenuItem(title: "退出 DropOverPlus", action: #selector(NSApp.terminate), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem(title: L.quit, action: #selector(NSApp.terminate), keyEquivalent: "q"))
 
         statusItem.menu = menu
     }

@@ -34,8 +34,8 @@ struct ShelfPanelView: View {
                     lineWidth: isDragOver ? 2 : 0
                 )
         )
-        .alert("文件拖放完成", isPresented: $showDragAction) {
-            Button("移动（并从 Shelf 移除）") {
+        .alert(L.dragCompleteTitle, isPresented: $showDragAction) {
+            Button(L.dragMove) {
                 for url in pendingDragFiles {
                     if FileManager.default.fileExists(atPath: url.path) {
                         try? FileManager.default.trashItem(at: url, resultingItemURL: nil)
@@ -49,15 +49,15 @@ struct ShelfPanelView: View {
                     }
                 }
             }
-            Button("保留副本", role: .cancel) {
+            Button(L.dragKeep, role: .cancel) {
                 // Finder 已复制文件，Shelf 保持不变
             }
         } message: {
             if pendingDragFiles.count == 1,
                let name = pendingDragFiles.first?.lastPathComponent {
-                Text("「\(name)」已放入目标位置。\n是否从 Shelf 中移除？")
+                Text(L.dragCompleteSingle(name))
             } else {
-                Text("已拖放 \(pendingDragFiles.count) 个文件到目标位置。\n是否从 Shelf 中移除？")
+                Text(L.dragCompleteMulti(pendingDragFiles.count))
             }
         }
         .onDrop(
@@ -103,10 +103,10 @@ struct ShelfPanelView: View {
                 .font(.caption2)
                 .foregroundColor(.secondary)
             Menu {
-                Text("创建于: \(shelf.prettyCreatedAt)")
-                Text("总计: \(shelf.estimatedTotalSize)")
+                Text(L.created(shelf.prettyCreatedAt))
+                Text(L.totalSize(shelf.estimatedTotalSize))
                 Divider()
-                Button("清空 Shelf") {
+                Button(L.clearShelf) {
                     manager.removeShelf(shelf.id)
                 }
             } label: {
@@ -161,14 +161,14 @@ struct ShelfPanelView: View {
                             manager.removeShelf(shelf.id)
                         }
                     } label: {
-                        Label("清空 Shelf", systemImage: "trash")
+                        Label(L.clearShelf, systemImage: "trash")
                             .font(.caption)
                     }
                     .buttonStyle(.borderless)
                     .foregroundColor(.red.opacity(0.7))
                     .padding(.horizontal, 4)
                     .padding(.vertical, 2)
-                    .help("清空此 Shelf 中所有文件")
+                    .help(L.clearShelf)
                     Spacer()
                 }
                 .padding(.vertical, 6)
@@ -184,7 +184,7 @@ struct ShelfPanelView: View {
             Image(systemName: "tray")
                 .font(.system(size: 36))
                 .foregroundColor(.secondary.opacity(0.5))
-            Text("拖拽文件到这里")
+            Text(L.dragHint)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
             Text("或点击按钮添加文件")
@@ -193,7 +193,7 @@ struct ShelfPanelView: View {
             Button {
                 addFilesFromDialog()
             } label: {
-                Label("选择文件", systemImage: "plus")
+                Label(L.addFiles, systemImage: "plus")
                     .font(.caption)
             }
             .buttonStyle(.borderedProminent)
@@ -275,7 +275,7 @@ struct ShelfPanelView: View {
         panel.canChooseFiles = true
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = true
-        panel.message = "选择要添加到 Shelf 的文件"
+        panel.message = L.selectFiles
         panel.begin { response in
             if response == .OK {
                 manager.addFiles(panel.urls, to: shelf.id)
@@ -347,21 +347,21 @@ struct FileCellView: View {
         .contentShape(RoundedRectangle(cornerRadius: 8))
         .onHover { hovering in isHovered = hovering }
         .contextMenu {
-            Button("打开") { NSWorkspace.shared.open(url) }
-            Button("在 Finder 中显示") {
+            Button(L.ctxOpen) { NSWorkspace.shared.open(url) }
+            Button(L.ctxShowInFinder) {
                 NSWorkspace.shared.activateFileViewerSelecting([url])
             }
             Divider()
-            Button("快速预览") {
+            Button(L.ctxQuickLook) {
                 QuickLookService.preview(urls: [url], at: 0)
             }
-            Button("复制到剪贴板") {
+            Button(L.ctxCopy) {
                 let pb = NSPasteboard.general
                 pb.clearContents()
                 pb.writeObjects([url as NSURL])
             }
             Divider()
-            Button("从 Shelf 移除", role: .destructive) {
+            Button(L.ctxRemove, role: .destructive) {
                 withAnimation { onRemove() }
             }
         }

@@ -1,0 +1,53 @@
+/* App */
+"app.name" = "DropOverPlus";
+"app.tagline" = "拖放操作，重新想象";
+
+/* Menu */
+"menu.newShelf" = "新建 Shelf";
+"menu.quit" = "退出 DropOverPlus";
+
+/* Shelf */
+"shelf.defaultTitle" = "Shelf %@";
+"shelf.files" = "%d 个文件";
+"shelf.created" = "创建于: %@";
+"shelf.totalSize" = "总计: %@";
+"shelf.empty" = "空 Shelf";
+"shelf.clearShelf" = "清空 Shelf";
+"shelf.addFiles" = "添加文件";
+"shelf.selectFiles" = "选择要添加到 Shelf 的文件";
+"shelf.dragHint" = "拖放文件到这里";
+
+/* Drag */
+"drag.complete.title" = "文件拖放完成";
+"drag.complete.single" = "「%@」已放入目标位置。是否从 Shelf 中移除？";
+"drag.complete.multi" = "已拖放 %d 个文件到目标位置。是否从 Shelf 中移除？";
+"drag.move" = "移动（并从 Shelf 移除）";
+"drag.keep" = "保留副本";
+
+/* Context Menu */
+"context.open" = "打开";
+"context.showInFinder" = "在 Finder 中显示";
+"context.quickLook" = "快速预览";
+"context.copy" = "复制";
+"context.remove" = "从 Shelf 移除";
+
+/* Settings */
+"settings.title" = "设置";
+"settings.general" = "通用";
+"settings.about" = "关于";
+"settings.closeAfterDrag" = "拖出文件后关闭 Shelf";
+"settings.floatOnTop" = "Shelf 窗口保持在最前";
+"settings.maxRecent" = "最多保留 %d 个最近 Shelf";
+"settings.shortcuts" = "快捷键";
+"settings.newShelf" = "新建 Shelf";
+"settings.version" = "版本 %@ — %@";
+"settings.about.desc" = "灵感来自 Dropover，纯 Swift 实现。\n拖拽文件到 Shelf 临时存放，\n再从 Shelf 拖出到目标位置。";
+
+/* HotKey */
+"hotkey.registered" = "快捷键: ⌘⇧N 已注册";
+"hotkey.failed" = "快捷键: 无法创建事件监听。请在系统设置 > 隐私与安全性 > 辅助功能中允许 DropOverPlus。";
+
+/* Errors */
+"error.saveFailed" = "保存 Shelf 状态失败: %@";
+"error.loadFailed" = "加载 Shelf 状态失败: %@";
+"error.quickLookFailed" = "预览文件失败";

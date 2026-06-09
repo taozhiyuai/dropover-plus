@@ -1,0 +1,53 @@
+/* App */
+"app.name" = "DropOverPlus";
+"app.tagline" = "Drag and drop, reimagined";
+
+/* Menu */
+"menu.newShelf" = "New Shelf";
+"menu.quit" = "Quit DropOverPlus";
+
+/* Shelf */
+"shelf.defaultTitle" = "Shelf %@";
+"shelf.files" = "%d file(s)";
+"shelf.created" = "Created: %@";
+"shelf.totalSize" = "Total: %@";
+"shelf.empty" = "Empty Shelf";
+"shelf.clearShelf" = "Clear Shelf";
+"shelf.addFiles" = "Add Files";
+"shelf.selectFiles" = "Select files to add to Shelf";
+"shelf.dragHint" = "Drag files here";
+
+/* Drag */
+"drag.complete.title" = "File Dropped";
+"drag.complete.single" = "\"%@\" has been placed. Remove from Shelf?";
+"drag.complete.multi" = "%d files have been placed. Remove from Shelf?";
+"drag.move" = "Move (remove from Shelf)";
+"drag.keep" = "Keep Copy";
+
+/* Context Menu */
+"context.open" = "Open";
+"context.showInFinder" = "Show in Finder";
+"context.quickLook" = "Quick Look";
+"context.copy" = "Copy";
+"context.remove" = "Remove from Shelf";
+
+/* Settings */
+"settings.title" = "Settings";
+"settings.general" = "General";
+"settings.about" = "About";
+"settings.closeAfterDrag" = "Close Shelf after dragging out";
+"settings.floatOnTop" = "Keep Shelf on top";
+"settings.maxRecent" = "Keep at most %d recent Shelf(s)";
+"settings.shortcuts" = "Shortcuts";
+"settings.newShelf" = "New Shelf";
+"settings.version" = "Version %@ — %@";
+"settings.about.desc" = "Inspired by Dropover. Built with pure Swift.\nDrag files to Shelf to store temporarily,\nthen drag out to your destination.";
+
+/* HotKey */
+"hotkey.registered" = "HotKey: ⌘⇧N registered";
+"hotkey.failed" = "HotKey: Unable to create event monitor. Please grant Accessibility permission in System Settings > Privacy & Security > Accessibility.";
+
+/* Errors */
+"error.saveFailed" = "Failed to save shelf state: %@";
+"error.loadFailed" = "Failed to load shelf state: %@";
+"error.quickLookFailed" = "Failed to preview file";

@@ -12,7 +12,7 @@ class Shelf: Identifiable, Codable, ObservableObject {
 
     init(id: UUID = UUID(), title: String? = nil, fileURLs: [URL] = []) {
         self.id = id
-        self.title = title ?? "Shelf \(id.uuidString.prefix(8))"
+        self.title = title ?? L.shelfTitle(String(id.uuidString.prefix(8)))
         self.fileURLs = fileURLs
         self.createdAt = Date()
         self.lastUsedAt = Date()
@@ -59,8 +59,8 @@ class Shelf: Identifiable, Codable, ObservableObject {
 extension Shelf {
     var displayFileCount: String {
         let count = fileURLs.count
-        if count == 0 { return "空" }
-        return "\(count) 个文件"
+        if count == 0 { return L.empty }
+        return L.fileCount(count)
     }
 
     var prettyCreatedAt: String {
