@@ -5,6 +5,11 @@ macOS 菜单栏应用，用于临时存放和拖放文件。类似 [Dropover](ht
 ![Platform](https://img.shields.io/badge/platform-macOS%2014%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-5.9-orange)
 
+## 截图
+
+![截图1](screenshot/screenshot-1.png)
+![截图2](screenshot/screenshot-2.png)
+
 ## 功能
 
 - 📦 **菜单栏图标** — 点击新建 Shelf，拖入文件暂存
@@ -18,17 +23,17 @@ macOS 菜单栏应用，用于临时存放和拖放文件。类似 [Dropover](ht
 
 ## 快速开始
 
+### 下载
+
+直接下载 Release 版本，解压后双击运行：
+https://github.com/taozhiyuai/dropover-plus/releases/latest
+
 ### 构建
 
 ```bash
 git clone https://github.com/taozhiyuai/dropover-plus.git
 cd dropover-plus
 ./build.sh
-```
-
-### 使用
-
-```bash
 open build/DropOverPlus.app
 ```
 
