@@ -2,14 +2,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "DropOverPlus",
+    name: "DropOverMini",
     defaultLocalization: "en",
     platforms: [
         .macOS(.v14)
     ],
     targets: [
         .executableTarget(
-            name: "DropOverPlus",
+            name: "DropOverMini",
             path: "Sources"
         )
     ]

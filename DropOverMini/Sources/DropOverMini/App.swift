@@ -4,7 +4,7 @@ import AppKit
 // MARK: - App Entry Point
 
 @main
-struct DropOverPlusApp: App {
+struct DropOverMiniApp: App {
     /// Use AppKit delegate for menu bar and system-level features
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 

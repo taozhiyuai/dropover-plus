@@ -104,5 +104,5 @@ struct L {
 }
 
 extension Notification.Name {
-    static let languageDidChange = Notification.Name("DropOverPlusLanguageDidChange")
+    static let languageDidChange = Notification.Name("DropOverMiniLanguageDidChange")
 }

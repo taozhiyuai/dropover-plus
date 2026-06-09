@@ -64,7 +64,7 @@ struct SettingsView: View {
                 .font(.system(size: 48))
                 .foregroundColor(.accentColor)
 
-            Text("DropOverPlus")
+            Text("DropOverMini")
                 .font(.title2)
                 .fontWeight(.semibold)
 

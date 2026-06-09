@@ -1,24 +1,24 @@
 #!/bin/bash
-# Build script for DropOverPlus
+# Build script for DropOverMini
 # Creates a standalone .app bundle
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_DIR="$SCRIPT_DIR/DropOverPlus"
+PROJECT_DIR="$SCRIPT_DIR/DropOverMini"
 BUILD_DIR="$SCRIPT_DIR/build"
-APP_NAME="DropOverPlus"
+APP_NAME="DropOverMini"
 APP_BUNDLE="$BUILD_DIR/$APP_NAME.app"
 
-echo "🔧 编译 DropOverPlus..."
+echo "🔧 编译 DropOverMini..."
 
 cd "$PROJECT_DIR"
 
 # Build with SwiftPM
-swift build -c release --product DropOverPlus
+swift build -c release --product DropOverMini
 
 # Locate the built binary
-BINARY_PATH=$(swift build -c release --show-bin-path)/DropOverPlus
+BINARY_PATH=$(swift build -c release --show-bin-path)/DropOverMini
 if [ ! -f "$BINARY_PATH" ]; then
     echo "❌ 编译产物未找到: $BINARY_PATH"
     exit 1
@@ -37,7 +37,7 @@ cp "$BINARY_PATH" "$APP_BUNDLE/Contents/MacOS/$APP_NAME"
 
 # Copy .lproj directories directly to Contents/Resources/
 # (macOS Bundle lookup: Contents/Resources/xx.lproj/)
-for LPROJ in Sources/DropOverPlus/*.lproj; do
+for LPROJ in Sources/DropOverMini/*.lproj; do
     if [ -d "$LPROJ" ]; then
         LPROJ_NAME=$(basename "$LPROJ")
         # Convert .strings from UTF-8 to UTF-16 (macOS standard) and copy
@@ -52,7 +52,7 @@ for LPROJ in Sources/DropOverPlus/*.lproj; do
 done
 
 # Also copy the resource bundle (AppIcon.icns etc.)
-BUNDLE_PATH=$(swift build -c release --show-bin-path)/DropOverPlus_DropOverPlus.bundle
+BUNDLE_PATH=$(swift build -c release --show-bin-path)/DropOverMini_DropOverMini.bundle
 if [ -d "$BUNDLE_PATH" ]; then
     cp -R "$BUNDLE_PATH" "$APP_BUNDLE/Contents/Resources/"
     echo "✅ 资源包已复制"
@@ -79,7 +79,7 @@ cat > "$APP_BUNDLE/Contents/Info.plist" << EOF
     <key>LSMinimumSystemVersion</key>
     <string>14.0</string>
     <key>NSHumanReadableCopyright</key>
-    <string>© 2026 DropOverPlus</string>
+    <string>© 2026 DropOverMini</string>
     <key>CFBundleIconFile</key>
     <string>AppIcon</string>
     <key>LSUIElement</key>
@@ -102,7 +102,7 @@ fi
 echo "✅ App Bundle 已创建: $APP_BUNDLE"
 echo ""
 echo "✨ 使用方式:"
-echo "   1. 双击打开 DropOverPlus.app"
+echo "   1. 双击打开 DropOverMini.app"
 echo "   2. 或者运行: open \"$APP_BUNDLE\""
 echo ""
 echo "⚠️  首次使用时需要授予权限:"

@@ -1,10 +1,10 @@
-# DropOverPlus
+# DropOverMini
 
 macOS menu bar app for temporary file staging and drag-and-drop. Open-source alternative to [Dropover](https://dropoverapp.com/).
 
 ![Platform](https://img.shields.io/badge/platform-macOS%2014%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-5.9-orange)
-[![GitHub release](https://img.shields.io/github/v/release/taozhiyuai/dropover-plus)](https://github.com/taozhiyuai/dropover-plus/releases/latest)
+[![GitHub release](https://img.shields.io/github/v/release/taozhiyuai/dropover-mini)](https://github.com/taozhiyuai/dropover-mini/releases/latest)
 
 ## Screenshots
 
@@ -27,16 +27,16 @@ macOS menu bar app for temporary file staging and drag-and-drop. Open-source alt
 
 ### Download
 
-Download the latest release, unzip and double-click `DropOverPlus.app`:
-https://github.com/taozhiyuai/dropover-plus/releases/latest
+Download the latest release, unzip and double-click `DropOverMini.app`:
+https://github.com/taozhiyuai/dropover-mini/releases/latest
 
 ### Build from source
 
 ```bash
-git clone https://github.com/taozhiyuai/dropover-plus.git
-cd dropover-plus
+git clone https://github.com/taozhiyuai/dropover-mini.git
+cd dropover-mini
 ./build.sh
-open build/DropOverPlus.app
+open build/DropOverMini.app
 ```
 
 On first launch, grant Accessibility permission if you want the `⌘⇧N` hotkey:
@@ -64,8 +64,8 @@ On first launch, grant Accessibility permission if you want the `⌘⇧N` hotkey
 ## Project Structure
 
 ```
-DropOverPlus/
-├── Sources/DropOverPlus/
+DropOverMini/
+├── Sources/DropOverMini/
 │   ├── App.swift                  # App entry & menu bar
 │   ├── Localizable.swift          # i18n string helper
 │   ├── ShelfManager.swift         # Shelf lifecycle management
@@ -85,4 +85,4 @@ DropOverPlus/
 
 ## Adding a New Language
 
-Create a new `xx.lproj/` directory under `Sources/DropOverPlus/`, copy `Localizable.strings` from `en.lproj/`, and translate all values. The app auto-detects system language on launch.
+Create a new `xx.lproj/` directory under `Sources/DropOverMini/`, copy `Localizable.strings` from `en.lproj/`, and translate all values. The app auto-detects system language on launch.
