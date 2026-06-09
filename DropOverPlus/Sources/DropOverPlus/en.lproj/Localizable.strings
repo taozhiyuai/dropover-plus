@@ -5,6 +5,7 @@
 /* Menu */
 "menu.newShelf" = "New Shelf";
 "menu.quit" = "Quit DropOverPlus";
+"menu.language" = "Language";
 
 /* Shelf */
 "shelf.defaultTitle" = "Shelf %@";

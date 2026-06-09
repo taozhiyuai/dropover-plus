@@ -5,6 +5,7 @@
 /* Menu */
 "menu.newShelf" = "新建 Shelf";
 "menu.quit" = "退出 DropOverPlus";
+"menu.language" = "语言";
 
 /* Shelf */
 "shelf.defaultTitle" = "Shelf %@";

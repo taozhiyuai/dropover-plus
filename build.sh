@@ -35,6 +35,29 @@ mkdir -p "$APP_BUNDLE/Contents/Resources"
 # Copy executable
 cp "$BINARY_PATH" "$APP_BUNDLE/Contents/MacOS/$APP_NAME"
 
+# Copy .lproj directories directly to Contents/Resources/
+# (macOS Bundle lookup: Contents/Resources/xx.lproj/)
+for LPROJ in Sources/DropOverPlus/*.lproj; do
+    if [ -d "$LPROJ" ]; then
+        LPROJ_NAME=$(basename "$LPROJ")
+        # Convert .strings from UTF-8 to UTF-16 (macOS standard) and copy
+        mkdir -p "$APP_BUNDLE/Contents/Resources/$LPROJ_NAME"
+        for STRINGS_FILE in "$LPROJ"/*.strings; do
+            if [ -f "$STRINGS_FILE" ]; then
+                iconv -f UTF-8 -t UTF-16 "$STRINGS_FILE" > "$APP_BUNDLE/Contents/Resources/$LPROJ_NAME/$(basename "$STRINGS_FILE")"
+            fi
+        done
+        echo "  ✅ $LPROJ_NAME 已复制 (UTF-16)"
+    fi
+done
+
+# Also copy the resource bundle (AppIcon.icns etc.)
+BUNDLE_PATH=$(swift build -c release --show-bin-path)/DropOverPlus_DropOverPlus.bundle
+if [ -d "$BUNDLE_PATH" ]; then
+    cp -R "$BUNDLE_PATH" "$APP_BUNDLE/Contents/Resources/"
+    echo "✅ 资源包已复制"
+fi
+
 # Create Info.plist
 cat > "$APP_BUNDLE/Contents/Info.plist" << EOF
 <?xml version="1.0" encoding="UTF-8"?>
@@ -61,6 +84,11 @@ cat > "$APP_BUNDLE/Contents/Info.plist" << EOF
     <string>AppIcon</string>
     <key>LSUIElement</key>
     <true/>
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>en</string>
+        <string>zh-Hans</string>
+    </array>
 </dict>
 </plist>
 EOF
