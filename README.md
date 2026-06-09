@@ -1,34 +1,36 @@
 # DropOverPlus
 
-macOS 菜单栏应用，用于临时存放和拖放文件。类似 [Dropover](https://dropoverapp.com/) 的开源替代。
+macOS menu bar app for temporary file staging and drag-and-drop. Open-source alternative to [Dropover](https://dropoverapp.com/).
 
 ![Platform](https://img.shields.io/badge/platform-macOS%2014%2B-blue)
 ![Swift](https://img.shields.io/badge/Swift-5.9-orange)
+[![GitHub release](https://img.shields.io/github/v/release/taozhiyuai/dropover-plus)](https://github.com/taozhiyuai/dropover-plus/releases/latest)
 
-## 截图
+## Screenshots
 
-![截图1](screenshot/screenshot-1.png)
-![截图2](screenshot/screenshot-2.png)
+![Screenshot 1](screenshot/screenshot-1.png)
+![Screenshot 2](screenshot/screenshot-2.png)
 
-## 功能
+## Features
 
-- 📦 **菜单栏图标** — 点击新建 Shelf，拖入文件暂存
-- ⌨️ **快捷键** — `⌘⇧N` 快速新建 Shelf
-- 🖱️ **拖入** — 将文件/文件夹拖入 Shelf 窗口
-- 🚀 **拖出** — 从 Shelf 拖出到 Finder 或任意目标
-- ✅ **多选** — 单击切换选中，`⌘+A` 全选，多文件一起拖出
-- 🗑️ **清空** — 底部一键清空当前 Shelf
-- 🔄 **拖放选项** — 拖放完成后可选择「移动」或「保留副本」
-- ⚡ **启动即用** — 打开 App 自动创建一个 Shelf
+- 📦 **Menu bar app** — click to create a Shelf, drag files in to stage
+- ⌨️ **Global hotkey** — `⌘⇧N` to quickly create a new Shelf
+- 🖱️ **Drag in** — drop files/folders into the Shelf window
+- 🚀 **Drag out** — drag files from Shelf to Finder or any destination
+- ✅ **Multi-select** — click to toggle selection (green highlight), `⌘+A` to select all
+- 🗑️ **Clear** — one button to clear the current Shelf
+- 🔄 **Move or copy** — after drag-out, choose "Move" (removes from Shelf) or "Keep copy"
+- ⚡ **Auto-launch ready** — creates a Shelf automatically on startup
+- 🌐 **Multi-language** — English & 简体中文 (auto-detects system language)
 
-## 快速开始
+## Quick Start
 
-### 下载
+### Download
 
-直接下载 Release 版本，解压后双击运行：
+Download the latest release, unzip and double-click `DropOverPlus.app`:
 https://github.com/taozhiyuai/dropover-plus/releases/latest
 
-### 构建
+### Build from source
 
 ```bash
 git clone https://github.com/taozhiyuai/dropover-plus.git
@@ -37,40 +39,50 @@ cd dropover-plus
 open build/DropOverPlus.app
 ```
 
-首次使用如提示快捷键权限，请到 **系统设置 → 隐私与安全性 → 辅助功能** 添加本应用。
+On first launch, grant Accessibility permission if you want the `⌘⇧N` hotkey:
+**System Settings → Privacy & Security → Accessibility**
 
-## 操作示意
+## Usage
 
-| 操作 | 说明 |
-|------|------|
-| 拖文件到 Shelf | 暂存文件 |
-| 从 Shelf 拖出 | 复制/移动到目标位置 |
-| 单击文件图标 | 切换选中状态（绿色高亮）|
-| `⌘+A` | 全选当前 Shelf 内文件 |
-| 右键文件 | 打开 / 在 Finder 中显示 / 快速预览 |
-| 底部红色按钮 | 清空当前 Shelf |
+| Action | Result |
+|--------|--------|
+| Drag file to Shelf | Stage file |
+| Drag file out of Shelf | Copy/move to destination |
+| Click file icon | Toggle selection (green highlight) |
+| `⌘+A` | Select all files in current Shelf |
+| Right-click file | Open / Show in Finder / Quick Look |
+| Bottom button | Clear current Shelf |
 
-## 技术栈
+## Tech Stack
 
-- SwiftUI + AppKit 混编
-- 原生拖放 API（NSDraggingSession）
-- 兼容 macOS 14+
+- SwiftUI + AppKit hybrid
+- Native drag-and-drop (NSDraggingSession)
+- Global hotkey via CGEvent tap
+- Localization via `.strings` files
+- Requires macOS 14+
 
-## 项目结构
+## Project Structure
 
 ```
 DropOverPlus/
 ├── Sources/DropOverPlus/
-│   ├── App.swift              # 入口 & 菜单栏
-│   ├── ShelfManager.swift     # Shelf 管理
+│   ├── App.swift                  # App entry & menu bar
+│   ├── Localizable.swift          # i18n string helper
+│   ├── ShelfManager.swift         # Shelf lifecycle management
 │   ├── ShelfWindowController.swift
 │   ├── Models/Shelf.swift
 │   ├── Views/
-│   │   ├── ShelfPanelView.swift   # 主面板（含拖拽）
+│   │   ├── ShelfPanelView.swift  # Main panel (drag in/out)
 │   │   └── SettingsView.swift
 │   └── Services/
 │       ├── HotKeyManager.swift
 │       └── QuickLookService.swift
+├── en.lproj/                     # English strings
+├── zh-Hans.lproj/                # Chinese (Simplified) strings
 ├── AppIcon.icns
 └── Package.swift
 ```
+
+## Adding a New Language
+
+Create a new `xx.lproj/` directory under `Sources/DropOverPlus/`, copy `Localizable.strings` from `en.lproj/`, and translate all values. The app auto-detects system language on launch.
