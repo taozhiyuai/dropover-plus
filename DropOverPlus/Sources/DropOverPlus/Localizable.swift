@@ -19,8 +19,6 @@ struct L {
     }
 
     private static var bundle: Bundle {
-        // 语言包直接放在 Contents/Resources/{lang}.lproj/
-        // macOS Bundle 查找会从这里读取
         let name = currentLang == "zh-Hans" ? "zh-Hans" : "en"
         return Bundle(path: Bundle.main.path(forResource: name, ofType: "lproj") ?? "") ?? Bundle.main
     }
@@ -30,13 +28,13 @@ struct L {
     }
 
     // MARK: - App
-    static let appName    = str("app.name")
-    static let appTagline = str("app.tagline")
+    static var appName: String { str("app.name") }
+    static var appTagline: String { str("app.tagline") }
 
     // MARK: - Menu
-    static let newShelf   = str("menu.newShelf")
-    static let quit       = str("menu.quit")
-    static let language   = str("menu.language")
+    static var newShelf: String { str("menu.newShelf") }
+    static var quit: String { str("menu.quit") }
+    static var language: String { str("menu.language") }
 
     // MARK: - Shelf
     static func shelfTitle(_ id: String) -> String {
@@ -51,49 +49,49 @@ struct L {
     static func totalSize(_ s: String) -> String {
         String(format: str("shelf.totalSize"), s)
     }
-    static let empty       = str("shelf.empty")
-    static let clearShelf  = str("shelf.clearShelf")
-    static let addFiles    = str("shelf.addFiles")
-    static let selectFiles = str("shelf.selectFiles")
-    static let dragHint    = str("shelf.dragHint")
+    static var empty: String { str("shelf.empty") }
+    static var clearShelf: String { str("shelf.clearShelf") }
+    static var addFiles: String { str("shelf.addFiles") }
+    static var selectFiles: String { str("shelf.selectFiles") }
+    static var dragHint: String { str("shelf.dragHint") }
 
     // MARK: - Drag
-    static let dragCompleteTitle   = str("drag.complete.title")
+    static var dragCompleteTitle: String { str("drag.complete.title") }
     static func dragCompleteSingle(_ name: String) -> String {
         String(format: str("drag.complete.single"), name)
     }
     static func dragCompleteMulti(_ count: Int) -> String {
         String(format: str("drag.complete.multi"), count)
     }
-    static let dragMove = str("drag.move")
-    static let dragKeep = str("drag.keep")
+    static var dragMove: String { str("drag.move") }
+    static var dragKeep: String { str("drag.keep") }
 
     // MARK: - Context Menu
-    static let ctxOpen         = str("context.open")
-    static let ctxShowInFinder = str("context.showInFinder")
-    static let ctxQuickLook    = str("context.quickLook")
-    static let ctxCopy         = str("context.copy")
-    static let ctxRemove       = str("context.remove")
+    static var ctxOpen: String { str("context.open") }
+    static var ctxShowInFinder: String { str("context.showInFinder") }
+    static var ctxQuickLook: String { str("context.quickLook") }
+    static var ctxCopy: String { str("context.copy") }
+    static var ctxRemove: String { str("context.remove") }
 
     // MARK: - Settings
-    static let settingsTitle   = str("settings.title")
-    static let settingsGeneral = str("settings.general")
-    static let settingsAbout   = str("settings.about")
-    static let closeAfterDrag  = str("settings.closeAfterDrag")
-    static let floatOnTop      = str("settings.floatOnTop")
+    static var settingsTitle: String { str("settings.title") }
+    static var settingsGeneral: String { str("settings.general") }
+    static var settingsAbout: String { str("settings.about") }
+    static var closeAfterDrag: String { str("settings.closeAfterDrag") }
+    static var floatOnTop: String { str("settings.floatOnTop") }
     static func maxRecent(_ n: Int) -> String {
         String(format: str("settings.maxRecent"), n)
     }
-    static let shortcuts   = str("settings.shortcuts")
-    static let newShelfKey = str("settings.newShelf")
+    static var shortcuts: String { str("settings.shortcuts") }
+    static var newShelfKey: String { str("settings.newShelf") }
     static func version(_ v: String, _ t: String) -> String {
         String(format: str("settings.version"), v, t)
     }
-    static let aboutDesc = str("settings.about.desc")
+    static var aboutDesc: String { str("settings.about.desc") }
 
     // MARK: - HotKey
-    static let hotkeyOK     = str("hotkey.registered")
-    static let hotkeyFailed = str("hotkey.failed")
+    static var hotkeyOK: String { str("hotkey.registered") }
+    static var hotkeyFailed: String { str("hotkey.failed") }
 
     // MARK: - Errors
     static func saveFailed(_ e: String) -> String {
@@ -102,7 +100,7 @@ struct L {
     static func loadFailed(_ e: String) -> String {
         String(format: str("error.loadFailed"), e)
     }
-    static let quickLookFailed = str("error.quickLookFailed")
+    static var quickLookFailed: String { str("error.quickLookFailed") }
 }
 
 extension Notification.Name {

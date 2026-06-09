@@ -16,6 +16,8 @@ struct ShelfPanelView: View {
     @State private var windowDragOrigin: CGPoint = .zero
     @State private var isDraggingWindow = false
     @State private var keyMonitor: Any?
+    /// 语言切换时 +1，强制 body 重新求值以刷新所有 L.xxx 字符串
+    @State private var langRefresh: Int = 0
 
     var body: some View {
         VStack(spacing: 0) {
@@ -23,6 +25,7 @@ struct ShelfPanelView: View {
             Divider()
             contentArea
         }
+        .id(langRefresh)
         .background(
             RoundedRectangle(cornerRadius: 8)
                 .fill(isDragOver ? Color.accentColor.opacity(0.1) : Color.clear)
@@ -66,7 +69,17 @@ struct ShelfPanelView: View {
         ) { providers in
             handleDrop(providers)
         }
-        .onAppear { setupKeyMonitor() }
+        .onAppear {
+            setupKeyMonitor()
+            // 监听语言切换，触发视图刷新
+            NotificationCenter.default.addObserver(
+                forName: .languageDidChange,
+                object: nil,
+                queue: .main
+            ) { _ in
+                langRefresh += 1
+            }
+        }
         .onDisappear {
             if let monitor = keyMonitor {
                 NSEvent.removeMonitor(monitor)

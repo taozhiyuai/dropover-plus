@@ -62,7 +62,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func rebuildMenu() {
         let menu = NSMenu()
-        menu.delegate = self
 
         // New Shelf
         let newItem = NSMenuItem(title: L.newShelf, action: #selector(createNewShelf), keyEquivalent: "n")
@@ -108,14 +107,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /// Called when files are dropped onto the status bar icon
     func handleFilesDropped(_ urls: [URL]) {
         shelfManager.createShelf(withFiles: urls)
-    }
-}
-
-// MARK: - NSMenuDelegate
-
-extension AppDelegate: NSMenuDelegate {
-    func menuWillOpen(_ menu: NSMenu) {
-        // Nothing to update
     }
 }
 
