@@ -17,7 +17,7 @@ class ShelfManager: ObservableObject {
     var windowControllers: [UUID: ShelfWindowController] = [:]
 
     /// UserDefaults key for persistence
-    private let storageKey = "DropOverPlusShelves"
+    private let storageKey = "DropOverMiniShelves"
 
     init() {
         loadState()
@@ -103,7 +103,7 @@ class ShelfManager: ObservableObject {
 
     private func stateFilePath() -> URL {
         let paths = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-        let appDir = paths[0].appendingPathComponent("DropOverPlus")
+        let appDir = paths[0].appendingPathComponent("DropOverMini")
         try? FileManager.default.createDirectory(at: appDir, withIntermediateDirectories: true)
         return appDir.appendingPathComponent("shelves.json")
     }
