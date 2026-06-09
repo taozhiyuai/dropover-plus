@@ -4,7 +4,7 @@ import Foundation
 /// 用户可在菜单中切换语言，设置存储在 UserDefaults
 /// 用法: L.newShelf, L.quit, L.dragCompleteTitle, etc.
 struct L {
-    private static let langKey = "DropOverPlusLanguage"
+    private static let langKey = "DropOverMiniLanguage"
 
     /// 当前语言: "en" 或 "zh-Hans"
     static var currentLang: String {
