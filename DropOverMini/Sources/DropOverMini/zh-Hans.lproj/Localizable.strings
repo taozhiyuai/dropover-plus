@@ -1,10 +1,10 @@
 /* App */
-"app.name" = "DropOverPlus";
+"app.name" = "DropOverMini";
 "app.tagline" = "拖放操作，重新想象";
 
 /* Menu */
 "menu.newShelf" = "新建 Shelf";
-"menu.quit" = "退出 DropOverPlus";
+"menu.quit" = "退出 DropOverMini";
 "menu.language" = "语言";
 
 /* Shelf */
@@ -46,7 +46,7 @@
 
 /* HotKey */
 "hotkey.registered" = "快捷键: ⌘⇧N 已注册";
-"hotkey.failed" = "快捷键: 无法创建事件监听。请在系统设置 > 隐私与安全性 > 辅助功能中允许 DropOverPlus。";
+"hotkey.failed" = "快捷键: 无法创建事件监听。请在系统设置 > 隐私与安全性 > 辅助功能中允许 DropOverMini。";
 
 /* Errors */
 "error.saveFailed" = "保存 Shelf 状态失败: %@";

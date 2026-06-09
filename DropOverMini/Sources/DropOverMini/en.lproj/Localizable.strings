@@ -1,10 +1,10 @@
 /* App */
-"app.name" = "DropOverPlus";
+"app.name" = "DropOverMini";
 "app.tagline" = "Drag and drop, reimagined";
 
 /* Menu */
 "menu.newShelf" = "New Shelf";
-"menu.quit" = "Quit DropOverPlus";
+"menu.quit" = "Quit DropOverMini";
 "menu.language" = "Language";
 
 /* Shelf */
