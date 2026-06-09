@@ -1,7 +1,9 @@
 DropOverPlus
 ============
 
-一个 macOS 菜单栏应用，用于临时存放和拖放文件。类似 Dropover 的开源替代。
+macOS 菜单栏应用，用于临时存放和拖放文件。类似 Dropover 的开源替代。
+
+🌐 https://github.com/taozhiyuai/dropover-plus
 
 功能
 ----
@@ -28,14 +30,19 @@ DropOverPlus
 4. 拖拽文件到 Shelf 窗口暂存
 5. 从 Shelf 窗口将文件拖出到目标位置
 
+构建
+----
+
+```bash
+git clone https://github.com/taozhiyuai/dropover-plus.git
+cd dropover-plus
+./build.sh
+open build/DropOverPlus.app
+```
+
 技术栈
 ------
 
 - SwiftUI + AppKit 混编
 - 原生拖放 API（NSDraggingSession）
 - 兼容 macOS 14+
-
-打包路径
---------
-
-build/DropOverPlus.app
