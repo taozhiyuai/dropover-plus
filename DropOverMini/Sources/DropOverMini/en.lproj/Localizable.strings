@@ -22,8 +22,8 @@
 "drag.complete.title" = "File Dropped";
 "drag.complete.single" = "\"%@\" has been placed. Remove from Shelf?";
 "drag.complete.multi" = "%d files have been placed. Remove from Shelf?";
-"drag.move" = "Move (remove from Shelf)";
-"drag.keep" = "Keep Copy";
+"drag.move" = "Move files (remove from Shelf)";
+"drag.keep" = "Copy files (Keep copy in Shelf)";
 
 /* Context Menu */
 "context.open" = "Open";
