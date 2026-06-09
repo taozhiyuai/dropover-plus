@@ -1,0 +1,9 @@
+.build/
+build/
+*.app
+*.icns
+.DS_Store
+*.xcuserstate
+*.xcworkspace
+xcuserdata/
+*.log
